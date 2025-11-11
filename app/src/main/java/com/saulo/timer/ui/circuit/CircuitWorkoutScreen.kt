@@ -26,6 +26,7 @@ import com.saulo.timer.ui.theme.restBetweenRoundsColor
 import com.saulo.timer.ui.theme.restColor
 import com.saulo.timer.ui.theme.workColor
 import com.saulo.timer.util.ImmersiveMode
+import com.saulo.timer.util.formatTime
 
 private data class TimerDisplayState(
     val stateText: String,
@@ -125,12 +126,19 @@ fun CircuitWorkoutScreen(
                                     Text(text = "Round: ${displayState.currentRound} / ${displayState.totalRounds}", fontSize = 20.sp)
                                 }
                                 Spacer(modifier = Modifier.height(16.dp))
-                                CircularTimer(
-                                    timeInMillis = displayState.remainingTime,
-                                    totalTime = displayState.totalIntervalTime,
-                                    progressColor = displayState.stateColor,
-                                    modifier = Modifier.size(300.dp)
-                                )
+                                Box(contentAlignment = Alignment.Center) {
+                                    CircularTimer(
+                                        timeInMillis = displayState.remainingTime,
+                                        totalTime = displayState.totalIntervalTime,
+                                        progressColor = displayState.stateColor,
+                                        modifier = Modifier.size(300.dp)
+                                    )
+                                    Text(
+                                        text = formatTime(displayState.remainingTime),
+                                        style = MaterialTheme.typography.displayLarge.copy(fontWeight = FontWeight.ExtraBold),
+                                        color = MaterialTheme.colorScheme.onBackground
+                                    )
+                                }
                             }
 
                             // Controls and Next Exercise

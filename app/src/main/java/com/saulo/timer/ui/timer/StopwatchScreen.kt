@@ -1,10 +1,14 @@
 package com.saulo.timer.ui.timer
 
 import androidx.compose.foundation.layout.*
+import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Pause
 import androidx.compose.material.icons.filled.PlayArrow
 import androidx.compose.material.icons.filled.Stop
+import androidx.compose.material3.Button
+import androidx.compose.material3.ButtonDefaults
+import androidx.compose.material3.Icon
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
 import androidx.compose.runtime.*
@@ -18,7 +22,6 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.lifecycle.viewmodel.compose.viewModel
 import com.saulo.timer.ui.components.CircularTimer
-import com.saulo.timer.ui.components.WorkoutControlButton
 import com.saulo.timer.util.ImmersiveMode
 import kotlinx.coroutines.launch
 import java.util.concurrent.TimeUnit
@@ -38,19 +41,33 @@ fun StopwatchScreen(
 
     ImmersiveMode {
         Column(
-            modifier = Modifier.fillMaxSize().padding(16.dp),
+            modifier = Modifier
+                .fillMaxSize()
+                .padding(16.dp),
             horizontalAlignment = Alignment.CenterHorizontally,
             verticalArrangement = Arrangement.SpaceAround
         ) {
             // Top section for description
-            Box(modifier = Modifier.weight(1f), contentAlignment = Alignment.Center) {
+            Column(
+                modifier = Modifier.weight(1f),
+                horizontalAlignment = Alignment.CenterHorizontally,
+                verticalArrangement = Arrangement.Center
+            ) {
+                Text(
+                    text = "Cronômetro",
+                    style = MaterialTheme.typography.headlineLarge,
+                    fontWeight = FontWeight.Bold,
+                    color = MaterialTheme.colorScheme.primary
+                )
                 Text(
                     text = "Cronômetro crescente, sem tempo definido",
                     style = TextStyle(fontSize = 16.sp),
                     textAlign = TextAlign.Center,
-                    color = MaterialTheme.colorScheme.onSurface.copy(alpha = 0.7f)
+                    color = MaterialTheme.colorScheme.onSurface.copy(alpha = 0.7f),
+                    modifier = Modifier.padding(top = 8.dp)
                 )
             }
+
 
             // Main timer using a Box to overlay text on the circular progress
             Box(
@@ -60,7 +77,7 @@ fun StopwatchScreen(
                 CircularTimer(
                     timeInMillis = time % 60000L, // Progress for the current minute
                     totalTime = 60000L, // Total time is 60 seconds for the ring
-                    showTime = false // We show our own formatted time
+                    strokeWidth = 10.dp
                 )
                 Text(
                     text = formatStopwatchTime(time),
@@ -72,29 +89,47 @@ fun StopwatchScreen(
 
             // Control buttons
             Row(
-                modifier = Modifier.fillMaxWidth().weight(1f),
+                modifier = Modifier
+                    .fillMaxWidth()
+                    .weight(1f),
                 horizontalArrangement = Arrangement.SpaceEvenly,
                 verticalAlignment = Alignment.CenterVertically
             ) {
-                WorkoutControlButton(
-                    icon = if (isRunning) Icons.Filled.Pause else Icons.Filled.PlayArrow,
-                    contentDescription = if (isRunning) "Pausar" else "Continuar",
-                    onClick = { 
-                        scope.launch {
-                            if (isRunning) viewModel.pauseTimer() else viewModel.startTimer()
-                        }
-                    }
-                )
-                WorkoutControlButton(
-                    icon = Icons.Filled.Stop,
-                    contentDescription = "Parar",
+                Button(
                     onClick = {
                         scope.launch {
                             viewModel.stopTimer()
                             onStop(viewModel.getFinalDuration())
                         }
-                    }
-                )
+                    },
+                    modifier = Modifier.size(80.dp),
+                    shape = CircleShape,
+                    colors = ButtonDefaults.buttonColors(containerColor = MaterialTheme.colorScheme.onSurface.copy(alpha = 0.1f))
+                ) {
+                    Icon(
+                        Icons.Filled.Stop,
+                        contentDescription = "Parar",
+                        modifier = Modifier.size(48.dp),
+                        tint = MaterialTheme.colorScheme.onSurface
+                    )
+                }
+                Button(
+                    onClick = {
+                        scope.launch {
+                            if (isRunning) viewModel.pauseTimer() else viewModel.startTimer()
+                        }
+                    },
+                    modifier = Modifier.size(80.dp),
+                    shape = CircleShape,
+                    colors = ButtonDefaults.buttonColors(containerColor = MaterialTheme.colorScheme.primary)
+                ) {
+                    Icon(
+                        if (isRunning) Icons.Filled.Pause else Icons.Filled.PlayArrow,
+                        contentDescription = if (isRunning) "Pausar" else "Continuar",
+                        modifier = Modifier.size(48.dp),
+                        tint = MaterialTheme.colorScheme.onPrimary
+                    )
+                }
             }
         }
     }

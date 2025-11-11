@@ -91,12 +91,13 @@ class EmomWorkoutViewModel(
     private fun handleIntervalFinish() {
         timer?.cancel()
 
-        val intervalDuration = when (_state.value) {
-            is EmomState.Prepare -> getPreparationTimeMillis()
-            is EmomState.Work -> 60000L
-            else -> 0L
+        if (_state.value !is EmomState.Prepare) {
+            val intervalDuration = when (_state.value) {
+                is EmomState.Work -> 60000L
+                else -> 0L
+            }
+            totalActualElapsedTime += intervalDuration
         }
-        totalActualElapsedTime += intervalDuration
 
         when (val currentState = _state.value) {
             is EmomState.Prepare -> {
@@ -130,7 +131,7 @@ class EmomWorkoutViewModel(
     fun pauseWorkout() {
         timer?.cancel()
         _isRunning.value = false
-        if (intervalStartTime > 0) {
+        if (intervalStartTime > 0 && _state.value !is EmomState.Prepare) {
             val currentIntervalDuration = System.currentTimeMillis() - intervalStartTime
             totalActualElapsedTime += currentIntervalDuration
             intervalStartTime = 0L
@@ -144,6 +145,9 @@ class EmomWorkoutViewModel(
 
     fun stopWorkoutAndGetElapsedTime(): Long {
         pauseWorkout()
+        if (_state.value is EmomState.Prepare) {
+            return 0L
+        }
         logWorkout(totalActualElapsedTime, "Interrupted")
         return totalActualElapsedTime
     }

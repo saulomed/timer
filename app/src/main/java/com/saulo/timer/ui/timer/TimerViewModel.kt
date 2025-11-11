@@ -106,6 +106,9 @@ class TimerViewModel(
     }
 
     fun getElapsedTime(): Long {
+        if (isPreparing) {
+            return 0L
+        }
         val remainingTime = when (val currentState = _state.value) {
             is TimerState.Paused -> currentState.remainingTime
             is TimerState.Running -> currentState.remainingTime

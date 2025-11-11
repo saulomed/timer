@@ -1,11 +1,15 @@
 package com.saulo.timer.ui.emom
 
 import androidx.compose.foundation.layout.*
+import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.FastForward
 import androidx.compose.material.icons.filled.Pause
 import androidx.compose.material.icons.filled.PlayArrow
 import androidx.compose.material.icons.filled.Stop
+import androidx.compose.material3.Button
+import androidx.compose.material3.ButtonDefaults
+import androidx.compose.material3.Icon
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
 import androidx.compose.runtime.*
@@ -21,16 +25,15 @@ import androidx.compose.ui.unit.sp
 import androidx.lifecycle.viewmodel.compose.viewModel
 import com.saulo.timer.ui.components.CircularTimer
 import com.saulo.timer.ui.components.PreparationScreen
-import com.saulo.timer.ui.components.WorkoutControlButton
 import com.saulo.timer.ui.theme.workColor
 import com.saulo.timer.util.ImmersiveMode
+import com.saulo.timer.util.formatTime
 
 private data class EmomDisplayState(
-    val titleText: String,
-    val titleColor: Color,
     val remainingTime: Long,
     val totalIntervalTime: Long,
-    val progressColor: Color
+    val progressColor: Color,
+    val currentMinute: Int
 )
 
 @Composable
@@ -69,64 +72,109 @@ fun EmomWorkoutScreen(
             )
         } else {
             val displayState = when (val s = state) {
-                is EmomState.Work -> EmomDisplayState("Minuto: ${s.currentMinute} / $minutes", MaterialTheme.colorScheme.onSurface, s.remainingTime, 60000L, MaterialTheme.workColor)
-                is EmomState.Finished -> EmomDisplayState("CONCLUÍDO", Color.Gray, 0L, 1L, Color.Gray)
+                is EmomState.Work -> EmomDisplayState(s.remainingTime, 60000L, MaterialTheme.workColor, s.currentMinute)
+                is EmomState.Finished -> EmomDisplayState(0L, 1L, Color.Gray, minutes)
                 else -> null // Should not happen
             }
 
             if (displayState != null) {
                 Column(
-                    modifier = Modifier.fillMaxSize().padding(16.dp),
+                    modifier = Modifier
+                        .fillMaxSize()
+                        .padding(16.dp),
                     horizontalAlignment = Alignment.CenterHorizontally,
-                    verticalArrangement = Arrangement.SpaceAround
+                    verticalArrangement = Arrangement.SpaceBetween
                 ) {
-                    // Top section for minute counter
+                    // Header
                     Column(horizontalAlignment = Alignment.CenterHorizontally) {
                         Text(
-                            text = displayState.titleText,
-                            style = TextStyle(fontSize = 32.sp, fontWeight = FontWeight.Bold),
-                            color = displayState.titleColor
+                            text = "EMOM",
+                            style = MaterialTheme.typography.headlineLarge,
+                            fontWeight = FontWeight.Bold,
+                            color = MaterialTheme.colorScheme.primary
+                        )
+                        Text(
+                            text = "Execute um exercício a cada minuto.",
+                            style = MaterialTheme.typography.bodyLarge,
+                            textAlign = TextAlign.Center,
+                            color = MaterialTheme.colorScheme.onSurface.copy(alpha = 0.6f),
+                            modifier = Modifier.padding(top = 8.dp, start = 16.dp, end = 16.dp)
                         )
                     }
 
                     // Main timer
-                    CircularTimer(
-                        timeInMillis = displayState.remainingTime,
-                        totalTime = displayState.totalIntervalTime,
-                        progressColor = displayState.progressColor
-                    )
+                    Box(contentAlignment = Alignment.Center) {
+                        CircularTimer(
+                            timeInMillis = displayState.remainingTime,
+                            totalTime = displayState.totalIntervalTime,
+                            progressColor = displayState.progressColor,
+                            strokeWidth = 10.dp
+                        )
+                        Text(
+                            text = formatTime(displayState.remainingTime),
+                            style = MaterialTheme.typography.displayLarge.copy(fontWeight = FontWeight.ExtraBold),
+                            color = MaterialTheme.colorScheme.onBackground
+                        )
+                    }
+
+                    // Footer
+                    Column(horizontalAlignment = Alignment.CenterHorizontally) {
+                        Text(text = "Minuto Atual", style = MaterialTheme.typography.labelMedium)
+                        Text(text = "${displayState.currentMinute}/$minutes", style = MaterialTheme.typography.titleLarge.copy(fontWeight = FontWeight.Bold))
+                    }
 
                     // Control buttons
-                    Column(horizontalAlignment = Alignment.CenterHorizontally) {
-                        Row(
-                            modifier = Modifier.fillMaxWidth(),
-                            horizontalArrangement = Arrangement.SpaceEvenly,
-                            verticalAlignment = Alignment.CenterVertically
+                    Row(
+                        modifier = Modifier.fillMaxWidth(),
+                        horizontalArrangement = Arrangement.SpaceEvenly,
+                        verticalAlignment = Alignment.CenterVertically
+                    ) {
+                        Button(
+                            onClick = {
+                                val elapsedTime = viewModel.stopWorkoutAndGetElapsedTime()
+                                onStop(elapsedTime)
+                            },
+                            modifier = Modifier.size(80.dp),
+                            shape = CircleShape,
+                            colors = ButtonDefaults.buttonColors(containerColor = MaterialTheme.colorScheme.onSurface.copy(alpha = 0.1f))
                         ) {
-                            WorkoutControlButton(
-                                icon = if (isRunning) Icons.Filled.Pause else Icons.Filled.PlayArrow,
-                                contentDescription = if (isRunning) "Pausar" else "Continuar",
-                                onClick = {
-                                    if (isRunning) viewModel.pauseWorkout() else viewModel.startWorkout()
-                                },
-                                enabled = state !is EmomState.Finished
-                            )
-                            WorkoutControlButton(
-                                icon = Icons.Filled.Stop,
+                            Icon(
+                                Icons.Filled.Stop,
                                 contentDescription = "Parar",
-                                onClick = {
-                                    val elapsedTime = viewModel.stopWorkoutAndGetElapsedTime()
-                                    onStop(elapsedTime)
-                                }
+                                modifier = Modifier.size(48.dp),
+                                tint = MaterialTheme.colorScheme.onSurface
                             )
                         }
-                        Spacer(modifier = Modifier.height(16.dp))
-                        WorkoutControlButton(
-                            icon = Icons.Filled.FastForward,
-                            contentDescription = "Pular",
-                            onClick = { viewModel.skip() },
+                        Button(
+                            onClick = {
+                                if (isRunning) viewModel.pauseWorkout() else viewModel.startWorkout()
+                            },
+                            modifier = Modifier.size(80.dp),
+                            shape = CircleShape,
+                            colors = ButtonDefaults.buttonColors(containerColor = MaterialTheme.colorScheme.primary),
                             enabled = state !is EmomState.Finished
-                        )
+                        ) {
+                            Icon(
+                                if (isRunning) Icons.Filled.Pause else Icons.Filled.PlayArrow,
+                                contentDescription = if (isRunning) "Pausar" else "Continuar",
+                                modifier = Modifier.size(48.dp),
+                                tint = MaterialTheme.colorScheme.onPrimary
+                            )
+                        }
+                        Button(
+                            onClick = { viewModel.skip() },
+                            modifier = Modifier.size(80.dp),
+                            shape = CircleShape,
+                            colors = ButtonDefaults.buttonColors(containerColor = MaterialTheme.colorScheme.onSurface.copy(alpha = 0.1f)),
+                            enabled = state !is EmomState.Finished
+                        ) {
+                            Icon(
+                                Icons.Filled.FastForward,
+                                contentDescription = "Pular",
+                                modifier = Modifier.size(48.dp),
+                                tint = MaterialTheme.colorScheme.onSurface
+                            )
+                        }
                     }
                 }
             }
