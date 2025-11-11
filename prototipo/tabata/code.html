@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html class="dark" lang="pt-BR"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Configurar TABATA</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Lexend:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" rel="stylesheet"/>
+<script id="tailwind-config">
+    tailwind.config = {
+      darkMode: "class",
+      theme: {
+        extend: {
+          colors: {
+            "primary": "#13ec13",
+            "background-light": "#f6f8f6",
+            "background-dark": "#102210",
+          },
+          fontFamily: {
+            "display": ["Lexend", "sans-serif"]
+          },
+          borderRadius: {
+            "DEFAULT": "0.25rem",
+            "lg": "0.5rem",
+            "xl": "0.75rem",
+            "full": "9999px"
+          },
+        },
+      },
+    }
+  </script>
+<style>
+    .material-symbols-outlined {
+      font-variation-settings:
+        'FILL' 0,
+        'wght' 400,
+        'GRAD' 0,
+        'opsz' 24
+    }
+  </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-background-light dark:bg-background-dark font-display text-gray-900 dark:text-white">
+<div class="relative flex h-auto min-h-screen w-full flex-col">
+<header class="sticky top-0 z-10 flex items-center bg-background-light/80 dark:bg-background-dark/80 p-4 pb-2 backdrop-blur-sm">
+<button class="text-gray-700 dark:text-gray-300 flex size-12 shrink-0 items-center justify-center">
+<span class="material-symbols-outlined text-2xl">arrow_back</span>
+</button>
+<div class="flex-1 text-center pr-12"></div>
+</header>
+<main class="flex-grow flex flex-col px-4 pt-4 pb-28">
+<div class="flex flex-col gap-2 text-center">
+<h1 class="text-4xl font-bold tracking-tighter text-primary">TABATA</h1>
+<p class="text-gray-400 dark:text-gray-500 max-w-sm mx-auto">
+          Um treino de alta intensidade com 8 rounds de 20 segundos de exercício e 10 segundos de descanso.
+        </p>
+</div>
+<div class="flex flex-col gap-6 mt-8">
+<div>
+<label class="block text-sm font-medium text-gray-400 dark:text-gray-500 mb-2" for="rounds">Quantidade de Rounds</label>
+<input class="w-full bg-white/5 dark:bg-black/20 text-white text-lg rounded-xl border-white/10 dark:border-black/20 focus:ring-primary focus:border-primary p-4 text-center placeholder:text-gray-500" id="rounds" name="rounds" type="number" value="8"/>
+</div>
+<div>
+<label class="block text-sm font-medium text-gray-400 dark:text-gray-500 mb-2" for="work-time">Tempo de Trabalho (segundos)</label>
+<input class="w-full bg-white/5 dark:bg-black/20 text-white text-lg rounded-xl border-white/10 dark:border-black/20 focus:ring-primary focus:border-primary p-4 text-center placeholder:text-gray-500" id="work-time" name="work-time" type="number" value="20"/>
+</div>
+<div>
+<label class="block text-sm font-medium text-gray-400 dark:text-gray-500 mb-2" for="rest-time">Tempo de Descanso (segundos)</label>
+<input class="w-full bg-white/5 dark:bg-black/20 text-white text-lg rounded-xl border-white/10 dark:border-black/20 focus:ring-primary focus:border-primary p-4 text-center placeholder:text-gray-500" id="rest-time" name="rest-time" type="number" value="10"/>
+</div>
+</div>
+</main>
+<footer class="fixed bottom-0 left-0 right-0 p-4 bg-gradient-to-t from-background-light dark:from-background-dark to-transparent">
+<div class="flex flex-col items-center gap-4">
+<button class="w-full h-14 bg-primary text-background-dark font-bold text-lg rounded-xl shadow-lg shadow-primary/30 hover:scale-105 active:scale-100 transition-transform duration-200 ease-in-out">
+          Iniciar Treino
+        </button>
+</div>
+</footer>
+</div>
+
+</body></html>

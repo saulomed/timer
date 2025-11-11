@@ -1,0 +1,48 @@
+# =========================================
+# Arquivos gerados pelo sistema de build
+# =========================================
+/build/
+*/build/
+/app/build/
+*.apk
+*.aab
+*.ap_
+
+# =========================================
+# Arquivos de configuração local
+# =========================================
+# Não inclua o arquivo de propriedades locais, pois ele contém
+# informações específicas do seu ambiente (ex: caminho do SDK).
+local.properties
+
+# =========================================
+# Arquivos e diretórios do Android Studio / IntelliJ
+# =========================================
+.idea/
+*.iml
+*.hprof
+*.keystore
+*.jks
+captures/
+.externalNativeBuild/
+.cxx/
+
+# Arquivos de cache do Gradle
+.gradle/
+build-cache/
+
+# Arquivos do sistema operacional
+.DS_Store
+Thumbs.db
+
+# =========================================
+# Arquivos de dependências e serviços
+# =========================================
+# Opcional: Se o seu google-services.json contiver chaves sensíveis,
+# é uma boa prática ignorá-lo e adicioná-lo manualmente no ambiente de build.
+# google-services.json
+
+# =========================================
+# Arquivos de log e temporários
+# =========================================
+*.log

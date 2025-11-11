@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html class="dark" lang="pt-br"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Configurar FOR TIME</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Lexend:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" rel="stylesheet"/>
+<script id="tailwind-config">
+    tailwind.config = {
+      darkMode: "class",
+      theme: {
+        extend: {
+          colors: {
+            "primary": "#13ec13",
+            "background-light": "#f6f8f6",
+            "background-dark": "#102210",
+          },
+          fontFamily: {
+            "display": ["Lexend", "sans-serif"]
+          },
+          borderRadius: {
+            "DEFAULT": "0.25rem",
+            "lg": "0.5rem",
+            "xl": "0.75rem",
+            "full": "9999px"
+          },
+        },
+      },
+    }
+  </script>
+<style>
+    .material-symbols-outlined {
+      font-variation-settings:
+      'FILL' 0,
+      'wght' 400,
+      'GRAD' 0,
+      'opsz' 24
+    }
+  </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-background-light dark:bg-background-dark font-display">
+<div class="relative flex min-h-screen w-full flex-col">
+<header class="flex shrink-0 items-center bg-background-light dark:bg-background-dark p-4 pb-2 justify-between sticky top-0 z-10">
+<button class="text-white flex size-10 items-center justify-center">
+<span class="material-symbols-outlined text-3xl">arrow_back</span>
+</button>
+<div class="size-10"></div>
+</header>
+<main class="flex-1 px-4 py-3">
+<div class="text-center mb-8">
+<h1 class="text-3xl font-bold text-primary">FOR TIME</h1>
+<p class="text-white/80 mt-2 max-w-sm mx-auto">Complete a tarefa o mais rápido possível. O relógio conta progressivamente até que você termine.</p>
+</div>
+<div class="mb-6">
+<label class="flex flex-col min-w-40 flex-1">
+<p class="text-white text-base font-medium leading-normal pb-2">Tempo Máximo (Opcional)</p>
+<div class="relative">
+<input class="form-input flex w-full min-w-0 flex-1 resize-none overflow-hidden rounded-lg text-white focus:outline-0 focus:ring-2 focus:ring-primary/50 border border-primary/20 bg-primary/10 h-14 placeholder:text-white/40 p-[15px] pl-5 text-base font-normal leading-normal" placeholder="Ex: 10" type="number"/>
+<span class="absolute right-4 top-1/2 -translate-y-1/2 text-white/60 text-sm">minutos</span>
+</div>
+</label>
+</div>
+</main>
+<footer class="p-4 pt-8 sticky bottom-0 z-10 bg-gradient-to-t from-background-dark to-transparent">
+<button class="flex h-14 w-full items-center justify-center rounded-xl bg-primary text-background-dark text-lg font-bold shadow-[0_4px_20px_rgba(19,236,19,0.3)] transition-transform active:scale-95">INICIAR TREINO</button>
+</footer>
+</div>
+</body></html>

@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html class="dark" lang="pt-BR"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Circuito - Preparação</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Lexend:wght@400;500;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" rel="stylesheet"/>
+<style>
+    .material-symbols-outlined {
+      font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+      font-size: 24px;
+    }
+    .progress-ring__circle {
+      transition: stroke-dashoffset 0.35s;
+      transform: rotate(-90deg);
+      transform-origin: 50% 50%;
+    }
+  </style>
+<script>
+    tailwind.config = {
+      darkMode: "class",
+      theme: {
+        extend: {
+          colors: {
+            "primary": "#13ec13",
+            "background-light": "#f6f8f6",
+            "background-dark": "#102210",
+            "action-exercise": "#13ec13",
+            "action-rest": "#FFA500",
+            "action-stop": "#FF4757",
+          },
+          fontFamily: {
+            "display": ["Lexend", "sans-serif"]
+          },
+          borderRadius: {
+            "DEFAULT": "0.25rem",
+            "lg": "0.5rem",
+            "xl": "0.75rem",
+            "full": "9999px"
+          },
+        },
+      },
+    }
+  </script>
+<style>
+    body {
+      min-height: 100dvh;
+    }
+  </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-background-light dark:bg-background-dark font-display text-white">
+<div class="relative flex min-h-screen w-full flex-col">
+<header class="flex items-center justify-between p-4 pb-2">
+<button class="flex h-12 w-12 shrink-0 items-center justify-start text-white">
+<span class="material-symbols-outlined">arrow_back</span>
+</button>
+<h1 class="flex-1 pr-12 text-center text-lg font-bold leading-tight tracking-[-0.015em] text-white">Circuito Full Body</h1>
+</header>
+<main class="flex flex-1 flex-col justify-between p-4">
+<div class="relative flex flex-1 flex-col items-center justify-center">
+<div class="relative flex h-64 w-64 items-center justify-center sm:h-80 sm:w-80">
+<svg class="absolute inset-0 h-full w-full" viewBox="0 0 120 120">
+<circle class="text-white/10" cx="60" cy="60" fill="transparent" r="54" stroke="currentColor" stroke-width="12"></circle>
+<circle class="progress-ring__circle text-primary" cx="60" cy="60" fill="transparent" r="54" stroke="currentColor" stroke-dasharray="339.292" stroke-dashoffset="0" stroke-linecap="round" stroke-width="12"></circle>
+</svg>
+<div class="z-10 text-center">
+<h2 class="text-3xl font-bold tracking-tight text-white sm:text-4xl">Prepare-se</h2>
+<p class="mt-2 text-7xl font-bold tracking-tighter text-white sm:text-8xl">10</p>
+</div>
+</div>
+</div>
+<div class="flex flex-col gap-8 pb-4">
+<div class="flex items-center justify-center gap-6">
+<button class="flex h-20 w-20 flex-col items-center justify-center rounded-full bg-primary text-background-dark">
+<span class="material-symbols-outlined text-4xl">play_arrow</span>
+</button>
+<button class="flex h-16 w-16 flex-col items-center justify-center rounded-full bg-white/10 text-action-stop">
+<span class="material-symbols-outlined text-3xl">stop</span>
+</button>
+<button class="flex h-16 w-16 flex-col items-center justify-center rounded-full bg-white/10 text-white">
+<span class="material-symbols-outlined text-3xl">skip_next</span>
+</button>
+</div>
+<div class="rounded-xl bg-white/5 p-4 text-center">
+<p class="text-sm font-medium uppercase tracking-widest text-white/70">Próximo Exercício</p>
+<p class="mt-1 text-lg font-bold text-white">Burpees</p>
+</div>
+</div>
+</main>
+</div>
+
+</body></html>

@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html class="dark" lang="pt-BR"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>AMRAP Workout Setup</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Lexend:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#13ec13",
+                        "background-light": "#f6f8f6",
+                        "background-dark": "#102210",
+                    },
+                    fontFamily: {
+                        "display": ["Lexend", "sans-serif"]
+                    },
+                    borderRadius: {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                },
+            },
+        }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+    </style>
+<style>
+        body {
+            min-height: max(884px, 100dvh);
+        }input[type=number]::-webkit-inner-spin-button,
+        input[type=number]::-webkit-outer-spin-button {
+            -webkit-appearance: none;
+            margin: 0;
+        }
+        input[type=number] {
+            -moz-appearance: textfield;
+        }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-background-light dark:bg-background-dark font-display text-white/90">
+<div class="relative flex h-auto min-h-screen w-full flex-col overflow-x-hidden">
+<div class="flex shrink-0 items-center bg-background-light dark:bg-background-dark p-4 pb-2">
+<div class="flex size-12 shrink-0 items-center justify-start">
+<span class="material-symbols-outlined text-white/90" style="font-size: 24px;">arrow_back_ios_new</span>
+</div>
+<div class="flex-1"></div> 
+</div>
+<main class="flex flex-1 flex-col justify-between px-6">
+<div class="flex flex-grow flex-col">
+<div class="text-center pt-2 pb-8">
+<h1 class="text-4xl font-bold tracking-tight text-white/90">AMRAP</h1>
+<p class="mt-4 text-base font-normal leading-normal text-white/60">"As Many Rounds As Possible". Complete o máximo de rounds ou repetições possíveis dentro do tempo determinado.</p>
+</div>
+<div class="flex flex-col items-center justify-center space-y-4 pt-8">
+<label class="text-lg font-semibold text-white/90" for="time-input">Tempo Total</label>
+<div class="relative w-48">
+<input class="w-full appearance-none rounded-xl border-none bg-white/5 p-4 text-center text-5xl font-bold text-primary placeholder-primary/50 focus:outline-none focus:ring-2 focus:ring-primary/50" id="time-input" inputmode="numeric" placeholder="10" type="number" value="10"/>
+<span class="pointer-events-none absolute right-4 top-1/2 -translate-y-1/2 text-lg font-medium text-white/40">min</span>
+</div>
+</div>
+</div>
+<div class="sticky bottom-0 bg-background-light/80 dark:bg-background-dark/80 backdrop-blur-sm pt-4 pb-6">
+<div class="flex py-3">
+<button class="flex h-12 min-w-[84px] max-w-[480px] flex-1 cursor-pointer items-center justify-center overflow-hidden rounded-xl bg-primary px-5 text-base font-bold leading-normal tracking-[0.015em] text-background-dark">
+<span class="truncate">INICIAR TREINO</span>
+</button>
+</div>
+</div>
+</main>
+</div>
+
+</body></html>

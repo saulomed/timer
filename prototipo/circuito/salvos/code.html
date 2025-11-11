@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="pt-BR"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Circuitos Salvos</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Lexend:wght@400;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" rel="stylesheet"/>
+<script>
+    tailwind.config = {
+      darkMode: "class",
+      theme: {
+        extend: {
+          colors: {
+            "primary": "#13ec13",
+            "background-light": "#f6f8f6",
+            "background-dark": "#102210",
+          },
+          fontFamily: {
+            "display": ["Lexend", "sans-serif"]
+          },
+          borderRadius: {
+            "DEFAULT": "0.25rem",
+            "lg": "0.5rem",
+            "xl": "0.75rem",
+            "full": "9999px"
+          },
+        },
+      },
+    }
+  </script>
+<style>
+    .material-symbols-outlined {
+      font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+    }
+  </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-background-light dark:bg-background-dark font-display">
+<div class="relative flex min-h-screen w-full flex-col">
+<!-- Top App Bar -->
+<header class="flex items-center p-4 pb-2 justify-between sticky top-0 z-10 bg-background-light/80 dark:bg-background-dark/80 backdrop-blur-sm">
+<button class="text-black dark:text-white flex size-10 shrink-0 items-center justify-center rounded-full hover:bg-black/10 dark:hover:bg-white/10 transition-colors">
+<span class="material-symbols-outlined text-2xl">arrow_back</span>
+</button>
+<h1 class="text-black dark:text-white text-lg font-bold leading-tight tracking-[-0.015em] flex-1 text-center">Circuitos Salvos</h1>
+<div class="size-10 shrink-0"></div> <!-- Spacer to balance the back button -->
+</header>
+<!-- Main Content -->
+<main class="flex-1 px-4 py-4 space-y-4">
+<!-- Card 1 -->
+<div class="flex flex-col items-stretch justify-start rounded-xl bg-white dark:bg-[#1C271C] shadow-sm overflow-hidden">
+<div class="flex w-full flex-col items-stretch justify-center gap-1 p-4">
+<p class="text-black dark:text-white text-lg font-bold leading-tight tracking-[-0.015em]">Treino de Corpo Inteiro</p>
+<p class="text-gray-600 dark:text-[#9DB99D] text-base font-normal leading-normal">3 rounds, 5 exercícios</p>
+</div>
+<div class="flex flex-wrap gap-2 px-4 pb-4 justify-between border-t border-black/10 dark:border-white/10 pt-4">
+<button class="flex flex-1 min-w-[120px] cursor-pointer items-center justify-center overflow-hidden rounded-lg h-10 px-4 bg-primary text-background-dark text-sm font-bold leading-normal tracking-[0.015em]">
+<span class="truncate">Iniciar Treino</span>
+</button>
+<div class="flex gap-2">
+<button class="flex w-10 h-10 cursor-pointer items-center justify-center overflow-hidden rounded-lg bg-black/5 dark:bg-[#283928] text-black dark:text-white text-sm font-bold leading-normal tracking-[0.015em]">
+<span class="material-symbols-outlined text-xl">edit</span>
+</button>
+<button class="flex w-10 h-10 cursor-pointer items-center justify-center overflow-hidden rounded-lg bg-red-500/10 dark:bg-red-500/20 text-red-500 text-sm font-bold leading-normal tracking-[0.015em]">
+<span class="material-symbols-outlined text-xl">delete</span>
+</button>
+</div>
+</div>
+</div>
+<!-- Card 2 -->
+<div class="flex flex-col items-stretch justify-start rounded-xl bg-white dark:bg-[#1C271C] shadow-sm overflow-hidden">
+<div class="flex w-full flex-col items-stretch justify-center gap-1 p-4">
+<p class="text-black dark:text-white text-lg font-bold leading-tight tracking-[-0.015em]">HIIT Rápido</p>
+<p class="text-gray-600 dark:text-[#9DB99D] text-base font-normal leading-normal">2 rounds, 2 exercícios</p>
+</div>
+<div class="flex flex-wrap gap-2 px-4 pb-4 justify-between border-t border-black/10 dark:border-white/10 pt-4">
+<button class="flex flex-1 min-w-[120px] cursor-pointer items-center justify-center overflow-hidden rounded-lg h-10 px-4 bg-primary text-background-dark text-sm font-bold leading-normal tracking-[0.015em]">
+<span class="truncate">Iniciar Treino</span>
+</button>
+<div class="flex gap-2">
+<button class="flex w-10 h-10 cursor-pointer items-center justify-center overflow-hidden rounded-lg bg-black/5 dark:bg-[#283928] text-black dark:text-white text-sm font-bold leading-normal tracking-[0.015em]">
+<span class="material-symbols-outlined text-xl">edit</span>
+</button>
+<button class="flex w-10 h-10 cursor-pointer items-center justify-center overflow-hidden rounded-lg bg-red-500/10 dark:bg-red-500/20 text-red-500 text-sm font-bold leading-normal tracking-[0.015em]">
+<span class="material-symbols-outlined text-xl">delete</span>
+</button>
+</div>
+</div>
+</div>
+<!-- Card 3 -->
+<div class="flex flex-col items-stretch justify-start rounded-xl bg-white dark:bg-[#1C271C] shadow-sm overflow-hidden">
+<div class="flex w-full flex-col items-stretch justify-center gap-1 p-4">
+<p class="text-black dark:text-white text-lg font-bold leading-tight tracking-[-0.015em]">Cardio Matinal</p>
+<p class="text-gray-600 dark:text-[#9DB99D] text-base font-normal leading-normal">Duração: 20 min</p>
+</div>
+<div class="flex flex-wrap gap-2 px-4 pb-4 justify-between border-t border-black/10 dark:border-white/10 pt-4">
+<button class="flex flex-1 min-w-[120px] cursor-pointer items-center justify-center overflow-hidden rounded-lg h-10 px-4 bg-primary text-background-dark text-sm font-bold leading-normal tracking-[0.015em]">
+<span class="truncate">Iniciar Treino</span>
+</button>
+<div class="flex gap-2">
+<button class="flex w-10 h-10 cursor-pointer items-center justify-center overflow-hidden rounded-lg bg-black/5 dark:bg-[#283928] text-black dark:text-white text-sm font-bold leading-normal tracking-[0.015em]">
+<span class="material-symbols-outlined text-xl">edit</span>
+</button>
+<button class="flex w-10 h-10 cursor-pointer items-center justify-center overflow-hidden rounded-lg bg-red-500/10 dark:bg-red-500/20 text-red-500 text-sm font-bold leading-normal tracking-[0.015em]">
+<span class="material-symbols-outlined text-xl">delete</span>
+</button>
+</div>
+</div>
+</div>
+<!-- Empty State Example -->
+<div class="flex flex-col items-center justify-center text-center p-8 mt-8 rounded-xl bg-white/50 dark:bg-black/20">
+<span class="material-symbols-outlined text-5xl text-gray-400 dark:text-gray-500 mb-4">search_off</span>
+<h3 class="text-black dark:text-white text-lg font-bold leading-tight mb-1">Nenhum circuito encontrado</h3>
+<p class="text-gray-600 dark:text-gray-400 text-base mb-6 max-w-xs">Crie e salve seus treinos personalizados para acessá-los aqui.</p>
+<button class="flex min-w-[84px] cursor-pointer items-center justify-center overflow-hidden rounded-lg h-10 px-6 bg-primary text-background-dark text-sm font-bold leading-normal tracking-[0.015em]">
+<span class="truncate">Criar Novo Circuito</span>
+</button>
+</div>
+</main>
+</div>
+</body></html>
